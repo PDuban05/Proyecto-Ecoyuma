@@ -35,7 +35,7 @@ if (!empty($_POST['idproducto'])) {
 
 
     <!-- Favicon icon -->
-    <link rel="icon" href="assets/images/favicon.svg" type="image/x-icon">
+    <link rel="icon" type="image/x-icon" href="../images/logo.webp">
 
     <!-- font css -->
 
@@ -64,7 +64,7 @@ if (!empty($_POST['idproducto'])) {
     <!-- [ Mobile header ] start -->
     <div class="pc-mob-header pc-header">
         <div class="pcm-logo">
-            <img src="assets/images/logo.png" alt="" class="logo logo-lg">
+        <img src="../images/logo.webp" alt="" class="logo logo-lg">
         </div>
         <div class="pcm-toolbar">
             <a href="#!" class="pc-head-link" id="mobile-collapse">

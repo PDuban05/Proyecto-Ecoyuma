@@ -23,7 +23,7 @@ $user="SELECT * FROM usuarios";
 
 
     <!-- Favicon icon -->
-    <link rel="icon" href="assets/images/favicon.svg" type="image/x-icon">
+    <link rel="icon" type="image/x-icon" href="../images/logo.webp">
 
     <!-- font css -->
     

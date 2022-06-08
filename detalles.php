@@ -1,7 +1,11 @@
-<?php session_start();
+<?php 
+// inicio de variables de sesion
+session_start();
+// inclusion de la conexion a la base de datos 
 include("php/conexion.php");
-
+// captura de variable de id
 $id_producto = $_GET['id'];
+//consulta de producto a la base de datos
 $consulta = "SELECT * FROM ofertas where id_inventario ='$id_producto'";
 
 $consulta2 = "SELECT * from inventario where id ='$id_producto' ";
@@ -59,7 +63,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
-
+	<!-- Favicon -->	
+	<link rel="icon" type="image/x-icon" href="/images/logo.webp">	
 
 	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<link href="css/login_overlay.css" rel='stylesheet' type='text/css' />
@@ -124,7 +129,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <!---->
 
 
-
+								 <!--Modal usuario -->
 
                     <div class="overlay-login text-left">
                         <button type="button" class="overlay-close1">
@@ -203,7 +208,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
 
 
-
+ <!--navbar -->
 
             <label class="top-log mx-auto"></label>
             <nav class="navbar navbar-expand-lg navbar-light bg-light top-header mb-2">
@@ -257,13 +262,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </header>
 
 	</div>
-	<!--//banner -->
-	<!--/shop-->
 
 
 
 
 
+ <!--producto -->
 
 
 	<section class="banner-bottom-wthreelayouts py-lg-5 py-3">
@@ -276,7 +280,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 								<ul class="slides">
 
-
+								 <!--validacion de existencias -->
 									<?php if (!empty($row["img_dir1"])) { ?>
 										<?php if (!empty($row["img_dir1"])) { ?>
 
@@ -410,7 +414,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 						<div class="occasion-cart">
 							<div class="googles single-item singlepage">
-
+ 								<!--captura de datos del producto para ser enviados al carrito -->
 
 								<input type="hidden" name="titulo" value="<?php echo $nombre; ?>">
 								<input type="hidden" name="ref" value="<?php echo $id; ?>">

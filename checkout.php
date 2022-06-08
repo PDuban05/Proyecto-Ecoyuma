@@ -3,7 +3,7 @@ session_start();
 include("php/conexion.php");
 
 
-
+// valiadacion de una sesion activa
 
 if (isset($_SESSION['id'])) {
 
@@ -25,7 +25,7 @@ MercadoPago\SDK::setAccessToken('TEST-2774693874356825-052711-f552a42a3e09800c1c
 // Crea un objeto de preferencia
 $preference = new MercadoPago\Preference();
 
-// Crea un ítem en la preferencia
+
 
 
 
@@ -50,6 +50,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			window.scrollTo(0, 1);
 		}
 	</script>
+	<!-- favicon -->
+	<link rel="icon" type="image/x-icon" href="/images/logo.webp">
+
 	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<link href="css/login_overlay.css" rel='stylesheet' type='text/css' />
 	<link href="css/style6.css" rel='stylesheet' type='text/css' />
@@ -108,7 +111,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							include_once("php/nav_cart.php ");
 							include_once("php/modal_cart.php");
 
-
+							// Crea un ítem en la preferencia
 							$items = array();
 							foreach ($carrito_mio as $producto) {
 
@@ -163,47 +166,72 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 					<div class="overlay-login text-left">
-						<button type="button" class="overlay-close1">
-							<i class="fa fa-times" aria-hidden="true"></i>
-						</button>
+                        <button type="button" class="overlay-close1">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </button>
 
 
-						<div class="wrap">
-							<div align="center" class="login p-5 bg-dark mx-auto mw-100">
+                        <div class="wrap">
+                            <div align="center" class="login p-5 bg-dark mx-auto mw-100">
 
-								<?php
-								if (!empty($_SESSION['name'])) {  ?>
-
-
-									<img src="login/images/user2.jpg" class="img-responsive profile-userpic" alt="">
-									<br>
-
-									<div class="form-group">
-										<label class="mb-2"> <?php echo $_SESSION['name'] . " " . $_SESSION['apellido'] ?> </label>
-
-										<small id="emailHelp" class="form-text text-muted"><?php echo $_SESSION['email'] ?></small>
-									</div>
+                                <?php
+                                if (!empty($_SESSION['name']) && $_SESSION['rol'] == "usuario") {  ?>
 
 
+                                    <img src="login/images/user2.jpg" class="img-responsive profile-userpic " alt="">
+                                    <br>
 
-								<?php
-								} else { ?>
+                                    <div class="form-group">
+                                        <label class="mb-2"> <?php echo $_SESSION['name'] . " " . $_SESSION['apellido'] ?> </label>
 
+                                        <small id="emailHelp" class="form-text text-muted"><?php echo $_SESSION['email'] ?></small>
 
-									<button type="submit" class="btn btn-primary submit mb-4"><a href="login/index.php">Ingresa </a></button>
-									<button type="submit" class="btn btn-primary submit mb-4"> <a href="login/registro.php">Registrar</a></button>
+                                        <h6 id="emailHelp" class="form-text text-muted"> <a href="registropedidos.php">Mis Compras</a> </h6>
+                                    </div>
 
-								<?php
-								} ?>
-
-
-							</div>
-
-						</div>
+                                    <button type="submit" class="btn btn-primary submit mb-4"><a href="login/logout.php">Cerrar Sesión</a></button>
 
 
-					</div>
 
+
+
+
+                                <?php
+                                } elseif (!empty($_SESSION['name']) && $_SESSION['rol'] == "admin") { ?>
+
+                                    <img src="images/logo.webp" class="img-responsive profile-userpic " alt="">
+                                    <br>
+
+                                    <div class="form-group">
+                                        <label class="mb-2"> <?php echo $_SESSION['name'] . " " . $_SESSION['apellido'] ?> </label>
+                                        <small id="emailHelp" class="form-text text-muted"><?php echo $_SESSION['email'] ?></small> <br>
+                                        <h6 id="emailHelp" class="form-text text-muted"> <a href="registropedidos.php">Mis Compras</a> </h6>
+
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary submit mb-4"><a href="admin/index.php">Administrar sitio</a></button>
+                                    <button type="submit" class="btn btn-primary submit mb-4"><a href="login/logout.php">Cerrar Sesión</a></button>
+
+
+
+
+
+                                <?php } else { ?>
+
+
+                                    <button type="submit" class="btn btn-primary submit mb-4"><a href="login/index.php">Ingresa </a></button>
+                                    <button type="submit" class="btn btn-primary submit mb-4"> <a href="login/registro.php">Registrar</a></button>
+
+                                <?php
+                                } ?>
+
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
 
 
 
@@ -267,6 +295,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</header>
 
 	</div>
+
 	<!--// header_top -->
 	<!--checkout-->
 	<section class="banner-bottom-wthreelayouts py-lg-5 py-3">
@@ -278,9 +307,37 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 					<div class="center mt-5">
+<!-- Validacion de mensaje de error de transaccion -->
+					<?php  if(isset($_SESSION['fallo']) ) { ?>
+						<div class="row">
+
+
+							<div class="col-md-12">
+
+
+								<div class="card-body">
+
+
+									<div class="alert alert-danger alert-dismissible fade show" role="alert">
+										<strong>Algo no ha ido bien!</strong> intenta realizar el pago de nuevo.
+										<button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+									</div>
+
+								</div>
+
+							</div>
+
+						</div> <?php }  unset($_SESSION['fallo'])?>
+
+
 						<div class="card pt-3">
 							<h3 class="tittle-w3layouts my-lg-4 mt-3">Carrito </h3>
 							<div class="container-fluid p-2">
+
+
+
+<!-- carrito de compras -->
+
 								<table class="table">
 									<thead>
 										<tr>
@@ -386,20 +443,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<a type="button" class="checkout-btn btn  my-4 btn-lg  ml-auto"></a>
 
 
-							<?php 	} elseif(isset($_SESSION['id'])) {
+							<?php 	} elseif (isset($_SESSION['id'])) {
 
 							?>
 
 								<a type="button" class="btn btn-success my-4 btn-lg  ml-auto" href="datos.php">Continuar</a>
-							
 
-							<?php 	}else{ ?>
+
+							<?php 	} else { ?>
 
 
 								<a type="button" class="btn btn-success my-4 btn-lg  ml-auto" href="login/index.php">Continuar</a>
-								
 
-								<?php $_SESSION['alt']="Antes de realizar una compra es necesario iniciar sesión";	}	?>
+
+							<?php $_SESSION['alt'] = "Antes de realizar una compra es necesario iniciar sesión";
+							}	?>
 
 						</div>
 

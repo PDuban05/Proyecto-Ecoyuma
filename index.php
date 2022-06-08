@@ -1,7 +1,10 @@
 <?php
 session_start();
+
+//incluye conexion base de datos
 include("php/conexion.php");
 
+//Valida si hay una sesion de usuario activa
 if (isset($_SESSION['id'])) {
 
     $id = $_SESSION['id'];
@@ -9,11 +12,14 @@ if (isset($_SESSION['id'])) {
     $user = "SELECT * FROM usuarios where id= $id";
     $records = mysqli_query($conexion, $user);
     $res = mysqli_fetch_assoc($records);
+    //asignacion de informacion a variables de sesion
     $_SESSION['name'] = $res['nombre'];
     $_SESSION['apellido'] = $res['apellido'];
     $_SESSION['email'] = $res['email'];
     $_SESSION['rol'] = $res['rol'];
 }
+
+//Se realiza una consulta de los productos en oferta disponbles
 
 $ofertas = "SELECT * FROM ofertas inner join inventario on ofertas.id_inventario = inventario.id";
 
@@ -43,11 +49,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 
-
+<!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/images/logo.webp">
+
+<!-- implementacion de librerias -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="css/bootstrap.css" rel='stylesheet' type='text/css'/>
     <link href="css/login_overlay.css" rel='stylesheet' type='text/css' />
     <link href="css/style6.css" rel='stylesheet' type='text/css' />
     <link rel="stylesheet" href="css/shop.css" type="text/css" />
@@ -110,7 +118,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <!---->
 
 
-
+<!-- modal de usuario -->
 
                     <div class="overlay-login text-left">
                         <button type="button" class="overlay-close1">
@@ -137,7 +145,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </div>
 
                                     <button type="submit" class="btn btn-primary submit mb-4"><a href="login/logout.php">Cerrar Sesión</a></button>
-
 
 
 
@@ -189,7 +196,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
 
 
-
+<!-- nav bar -->
 
             <label class="top-log mx-auto"></label>
             <nav class="navbar navbar-expand-lg navbar-light bg-light top-header mb-2">
@@ -238,7 +245,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                 </div>
             </nav>
-
+<!-- nav bar end -->
 
         </header>
 
@@ -307,7 +314,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <!--//banner -->
         </div>
     </div>
-    <!--//banner-sec-->
+    
     <section class="banner-bottom-wthreelayouts py-lg-5 py-3">
         <div class="container-fluid">
             <div class="inner-sec-shop px-lg-4 px-3">
@@ -318,6 +325,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
                     <?php
+                    //ejecucion y consulta
                     $resultado = mysqli_query($conexion, $ofertas);
                     while ($row = mysqli_fetch_assoc($resultado)) { ?>
 
@@ -392,6 +400,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     <?php  } ?>
 
+                    <!-- productos end -->
+
 
 
 
@@ -404,7 +414,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 
-
+<!-- catalogo -->
                 <script>
                     function plantas_cacao() {
                         document.formulario.submit()
@@ -456,10 +466,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                                         <div class="carousel-inner">
                                             <div class="carousel-item active">
-                                                <img class="img-fluid d-block h-100 w-100" src="images/cate_cacao.jpg" alt="First slide">
+                                            <a href="javascript:plantas_cacao()"><img class="img-fluid d-block h-100 w-100" src="images/cate_cacao.jpg" alt="First slide"></a>
                                             </div>
                                             <div class="carousel-item">
-                                                <img class="img-fluid d-block h-100 w-100" src="images/cate_cacao2.jpg" alt="Second slide">
+                                            <a href="javascript:plantas_cacao()"> <img class="img-fluid d-block h-100 w-100" src="images/cate_cacao2.jpg" alt="Second slide"></a>
                                             </div>
 
                                         </div>
@@ -482,10 +492,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                                         <div class="carousel-inner">
                                             <div class="carousel-item active">
-                                                <img class="img-fluid d-block h-100 w-100" src="images/cate_semillas.jpg" alt="First slide">
+                                            <a href="javascript:semillas()"> <img class="img-fluid d-block h-100 w-100" src="images/cate_semillas.jpg" alt="First slide"></a>
                                             </div>
                                             <div class="carousel-item">
-                                                <img class="img-fluid d-block h-100 w-100" src="images/cate_semillas2.jpg" alt="Second slide">
+                                            <a href="javascript:semillas()"> <img class="img-fluid d-block h-100 w-100" src="images/cate_semillas2.jpg" alt="Second slide"></a>
                                             </div>
 
 
@@ -506,11 +516,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                                         <div class="carousel-inner">
                                             <div class="carousel-item active">
-                                                <img class="img-fluid d-block h-100 w-100" src="images/cate_plan.jpg" alt="First slide">
+                                            <a href="javascript:ornamentales()"> <img class="img-fluid d-block h-100 w-100" src="images/cate_plan.jpg" alt="First slide"> </a>
 
                                             </div>
                                             <div class="carousel-item">
-                                                <img class="img-fluid d-block h-100 w-100" src="images/cate_plan2.jpg" alt="Second slide">
+                                            <a href="javascript:ornamentales()"><img class="img-fluid d-block h-100 w-100" src="images/cate_plan2.jpg" alt="Second slide"> </a>
                                             </div>
 
                                         </div>
@@ -521,6 +531,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     </div>
                 </section>
+
+                <!-- catalogo end -->
 
 
 
@@ -653,6 +665,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <p>Al suscribirse a nuestra lista de correo, siempre recibirá nuestras últimas noticias y actualizaciones</p>
 
                         <?php
+                        //registro de correos en la base de datos
                         require 'login/database.php';
                         if (!empty($_POST["Email"])) {
 

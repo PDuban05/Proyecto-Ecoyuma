@@ -1,7 +1,10 @@
-<?php session_start();
-include("php/conexion.php");
+<?php
+//inicio de variable de session
+session_start();
+include("php/conexion.php"); //incluye conecion a base de datos
 include("login/database.php");
 
+//validar sesion de usuario activa
 if (isset($_SESSION['id'])) {
 
     $id = $_SESSION['id'];
@@ -10,6 +13,7 @@ if (isset($_SESSION['id'])) {
     $records = mysqli_query($conexion, $direccion);
     $res = mysqli_fetch_assoc($records);
 }
+//captura de datos de retorno por post
 
 if (!empty($_POST)) {
     $id = $_SESSION['id'];
@@ -23,7 +27,7 @@ if (!empty($_POST)) {
     $departamento = $_POST["departamento"];
     $referencia = $_POST["referencia"];
 
-
+// actualizacion de datos de un usuario ya registrado
     $sql = "UPDATE usuarios SET nombre='$nombre',apellido='$apellido',telefono='$telefono',email='$email' where id ='$id'";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
@@ -32,6 +36,7 @@ if (!empty($_POST)) {
     $records = mysqli_query($conexion, $sql);
     $row = mysqli_fetch_assoc($records);
     
+    //valiacion de registros existentes
 
     if(!empty($row) ){
 
@@ -74,6 +79,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             window.scrollTo(0, 1);
         }
     </script>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/images/logo.webp">
+
     <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
     <link href="css/login_overlay.css" rel='stylesheet' type='text/css' />
     <link href="css/style6.css" rel='stylesheet' type='text/css' />
@@ -141,7 +149,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 
-
+<!-- modal cliente  -->
                     <div class="overlay-login text-left">
                         <button type="button" class="overlay-close1">
                             <i class="fa fa-times" aria-hidden="true"></i>
@@ -194,7 +202,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 
-
+                 <!-- navbar -->                 
             <label class="top-log mx-auto"></label>
             <nav class="navbar navbar-expand-lg navbar-light bg-light top-header mb-2">
 

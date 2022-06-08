@@ -34,7 +34,7 @@ $row2 = mysqli_fetch_assoc($resultado2);
 
 
     <!-- Favicon icon -->
-    <link rel="icon" href="assets/images/favicon.svg" type="image/x-icon">
+    <link rel="icon" type="image/x-icon" href="../images/logo.webp">
 
     <!-- font css -->
 
@@ -84,7 +84,7 @@ $row2 = mysqli_fetch_assoc($resultado2);
     <!-- [ Mobile header ] start -->
     <div class="pc-mob-header pc-header">
         <div class="pcm-logo">
-            <img src="assets/images/logo.png" alt="" class="logo logo-lg">
+        <img src="./images/logo.webp" alt="" class="logo logo-lg">
         </div>
         <div class="pcm-toolbar">
             <a href="#!" class="pc-head-link" id="mobile-collapse">
@@ -110,8 +110,8 @@ $row2 = mysqli_fetch_assoc($resultado2);
             <div class="m-header">
                 <a href="index.html" class="b-brand">
 
-                    <img src="assets/images/logo.png" alt="" class="logo logo-lg">
-                    <img src="assets/images/logo.png" alt="" class="logo logo-sm">
+                <img src="./images/logo.webp" alt="" class="logo logo-lg">
+                <img src="./images/logo.webp" alt="" class="logo logo-sm">
                 </a>
             </div>
             <div class="navbar-content">

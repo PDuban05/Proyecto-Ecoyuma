@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("php/conexion.php");
-
+//validacion de valor existente para realiza una consulta de busqueda
 if (!empty($_POST['search'])) {
 
 	$clave = $_POST['search'];
@@ -93,7 +93,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 
-
+<!-- modal usuario  -->
                     <div class="overlay-login text-left">
                         <button type="button" class="overlay-close1">
                             <i class="fa fa-times" aria-hidden="true"></i>
@@ -146,7 +146,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 
-           
+           <!-- navbar -->
             <label class="top-log mx-auto"></label>
             <nav class="navbar navbar-expand-lg navbar-light bg-light top-header mb-2">
 
@@ -211,7 +211,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="search-hotel">
 							<h3 class="agileits-sear-head">Puedes buscar aqui..</h3>
 							<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-								<input class="form-control" type="search" name="search" placeholder="" required="">
+								<input class="form-control" type="search" name="search" placeholder="" value="<?php if(!empty($clave)){ echo $clave; }?>" required="">
 								<button class="btn1" type="submit">
 									<i class="fas fa-search"></i>
 								</button>
@@ -224,6 +224,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<!-- //product left -->
 					<!--/product right-->
+
+					<!-- Ejcucion e impresion de la consulta realizada -->
 					<div class="left-ads-display col-lg-9">
 						<div class="wrapper_top_shop">
 							<div class="row">
@@ -244,7 +246,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									while ($row = mysqli_fetch_assoc($resultado)) {
 
 									
-
+										// validad productos que esten ofertados y los resalta
 											$id = $row["id"];
 											$consulta2 = "SELECT * FROM inventario inner join ofertas on (select id from inventario where id= '$id') = ofertas.id_inventario";
 											$resultado2 = mysqli_query($conexion, $consulta2);
@@ -365,7 +367,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											
 										
 									}else{
-										echo "zzz";
+										echo "<h3>No se encontraron coincidencias</h3>";
 
 									}
 								

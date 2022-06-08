@@ -1,14 +1,15 @@
 <?php
+// inicio de variables de sesion
 session_start();
 include("php/conexion.php");
-
+//validacion de sesion activa
 if(!isset( $_SESSION['id'])){
     header("Location:index.php");
 }
 
 $id = $_SESSION['id'];
 
-
+//consulta de de pedidos del cliente en sesion
 $pedidos = "SELECT * FROM pedidos WHERE id_cliente ='$id' order by fecha desc ";
 
 
@@ -37,8 +38,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 
-
+<!-- favicon -->
     <link rel="icon" type="image/x-icon" href="/images/logo.webp">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
@@ -104,7 +106,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <!---->
 
 
-
+<!-- modal usuario -->
 
                     <div class="overlay-login text-left">
                         <button type="button" class="overlay-close1">
@@ -174,12 +176,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 
-                    <!---->
+                    <!--end modal -->
                 </div>
             </div>
 
 
-
+<!-- navbar -->
 
             <label class="top-log mx-auto"></label>
             <nav class="navbar navbar-expand-lg navbar-light bg-light top-header mb-2">
@@ -253,7 +255,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
                     <?php
-                  
+                  // ejecucion e impresion de los registro de compra del cliente en sesion 
                     $resultado = mysqli_query($conexion, $pedidos);
                     $c=1;
                     while ($row = mysqli_fetch_assoc($resultado)) {
@@ -266,6 +268,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                         $detalle =  "SELECT * FROM detalles WHERE id_pedido ='$id_pedido' ";
                         $resultado2 = mysqli_query($conexion, $detalle);
+
+// convertir fecha inglesa a castellano
 
                         $fecha = substr($row["fecha"], 0, 10);
                         $numeroDia = date('d', strtotime($fecha));

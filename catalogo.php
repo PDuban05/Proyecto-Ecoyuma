@@ -2,7 +2,7 @@
 
 include("php/conexion.php");
 
-
+//captura de datos y consulta del catalogo a la base de datos
 $categoria = $_GET['categoria'];
 $consulta = "SELECT * FROM inventario where categoria='$categoria'";
 
@@ -100,7 +100,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 
-
+<!-- modal cliente -->
                     <div class="overlay-login text-left">
                         <button type="button" class="overlay-close1">
                             <i class="fa fa-times" aria-hidden="true"></i>
@@ -178,7 +178,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
 
 
-
+<!-- navbar -->
 
             <label class="top-log mx-auto"></label>
             <nav class="navbar navbar-expand-lg navbar-light bg-light top-header mb-2">
@@ -396,88 +396,88 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 
-                <section id="clases">
+				<section id="clases">
 
-                    <div class="row galsses-grids pt-lg-5 pt-3">
+<div class="row galsses-grids pt-lg-5 pt-3">
 
-                        <h3 class="tittle-w3layouts my-lg-4 my-4">Categorias</h3>
+	<h3 class="tittle-w3layouts my-lg-4 my-4">Categorias</h3>
 
-                        <div class="col-sm-4">
-                            <div class="card">
-                                <div class="card-header">
-                                    <a href="javascript:plantas_cacao()">
-                                        <h5> Plantulas de cacao </h5>
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                                        <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                                <img class="img-fluid d-block h-100 w-100" src="images/cate_cacao.jpg" alt="First slide">
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img class="img-fluid d-block h-100 w-100" src="images/cate_cacao2.jpg" alt="Second slide">
-                                            </div>
+	<div class="col-sm-4">
+		<div class="card">
+			<div class="card-header">
+				<a href="javascript:plantas_cacao()">
+					<h5> Plantulas de cacao </h5>
+				</a>
+			</div>
+			<div class="card-body">
+				<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+						<a href="javascript:plantas_cacao()"><img class="img-fluid d-block h-100 w-100" src="images/cate_cacao.jpg" alt="First slide"></a>
+						</div>
+						<div class="carousel-item">
+						<a href="javascript:plantas_cacao()"> <img class="img-fluid d-block h-100 w-100" src="images/cate_cacao2.jpg" alt="Second slide"></a>
+						</div>
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
-                        <div class="col-sm-4">
-                            <div class="card">
-                                <div class="card-header">
-                                    <a href="javascript:semillas()">
-                                        <h5>Semillas</h5>
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                                        <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                                <img class="img-fluid d-block h-100 w-100" src="images/cate_semillas.jpg" alt="First slide">
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img class="img-fluid d-block h-100 w-100" src="images/cate_semillas2.jpg" alt="Second slide">
-                                            </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="card">
-                                <div class="card-header">
-                                    <a href="javascript:ornamentales()">
-                                        <h5>Plántulas Ornamentales</h5>
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                                        <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                                <img class="img-fluid d-block h-100 w-100" src="images/cate_plan.jpg" alt="First slide">
 
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img class="img-fluid d-block h-100 w-100" src="images/cate_plan2.jpg" alt="Second slide">
-                                            </div>
+	<div class="col-sm-4">
+		<div class="card">
+			<div class="card-header">
+				<a href="javascript:semillas()">
+					<h5>Semillas</h5>
+				</a>
+			</div>
+			<div class="card-body">
+				<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+						<a href="javascript:semillas()"> <img class="img-fluid d-block h-100 w-100" src="images/cate_semillas.jpg" alt="First slide"></a>
+						</div>
+						<div class="carousel-item">
+						<a href="javascript:semillas()"> <img class="img-fluid d-block h-100 w-100" src="images/cate_semillas2.jpg" alt="Second slide"></a>
+						</div>
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                    </div>
-                </section>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-4">
+		<div class="card">
+			<div class="card-header">
+				<a href="javascript:ornamentales()">
+					<h5>Plántulas Ornamentales</h5>
+				</a>
+			</div>
+			<div class="card-body">
+				<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+						<a href="javascript:ornamentales()"> <img class="img-fluid d-block h-100 w-100" src="images/cate_plan.jpg" alt="First slide"> </a>
+
+						</div>
+						<div class="carousel-item">
+						<a href="javascript:ornamentales()"><img class="img-fluid d-block h-100 w-100" src="images/cate_plan2.jpg" alt="Second slide"> </a>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+</section>
 
 
 
